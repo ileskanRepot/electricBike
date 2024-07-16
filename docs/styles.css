@@ -1,0 +1,69 @@
+body {
+  font-family: Liberation Mono, monospace;
+  /* align-content: center; */
+  background: #1c1c1c;
+  color: #ffc0cb;
+}
+
+#all {
+  margin: auto;
+  max-width: 1024px;
+}
+#welcome {
+  inline-size: 50%;
+  width: 100%;
+  /* height: 100px; */
+  /* background-color: green; */
+}
+
+#whoami {
+  width: 100%;
+  /* height: 100px; */
+  /* background-color: yellow; */
+}
+
+#projects {
+  width: 100%;
+  /* height: 100px; */
+  /* background-color: green; */
+}
+
+.projectHr {
+  border: 1px dashed #ba55d3;
+  /* color: #ba55d3; */
+}
+
+#links,
+#links img {
+  height: 2em;
+  align-content: center;
+  /* position: relative; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* float: left; */
+}
+
+#links a {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+h1 {
+  color: #ff1493;
+}
+
+hr {
+  color: #ba55d3;
+}
+
+a {
+  color: #ff1493;
+}
+a:visited {
+  color: #a3386c;
+}
