@@ -1,0 +1,17 @@
+\documentclass[margin=3mm]{standalone}
+\usepackage[utf8]{inputenc}
+\usepackage[american, siunitx]{circuitikz}
+% \usepackage{import}
+\input{../../../arduino.tex}
+
+\begin{document}
+% \input{./test.tex}
+
+\begin{tikzpicture}
+	\draw[red] (4,0) node[arduino] (arduino1) {};
+  \draw ($(arduino1.Vin) + (1,0)$) -- (arduino1.D12) 
+		;
+\end{tikzpicture}
+
+\end{document}
+
