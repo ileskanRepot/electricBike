@@ -1,0 +1,45 @@
+\pgfkeys{/tikz/fillColor/.store in=\fillColor}
+\pgfkeys{/tikz/strokeColor/.store in=\strokeColor}
+
+\pgfdeclareshape{potmet}{
+    \anchor{center}{\pgfpointorigin} % within the node, (0,0) is the center
+    \anchor{text} % this is used to center the text in the node
+    {\pgfpoint{-.5\wd\pgfnodeparttextbox}{-.5\ht\pgfnodeparttextbox}}
+
+		% Control Pins
+    \savedanchor\potmeta{\pgfpoint{-1cm}{-2.4cm}}
+    \anchor{5V}{\potmeta}
+    \savedanchor\potmetb{\pgfpoint{0cm}{-2.4cm}}
+    \anchor{data}{\potmetb}
+    \savedanchor\potmetc{\pgfpoint{1cm}{-2.4cm}}
+    \anchor{GND}{\potmetc}
+
+
+    \foregroundpath{ % Border and Pin Names are drawn here
+        \pgfsetlinewidth{0.5pt}
+        \pgfpathrectanglecorners{\pgfpoint{2cm}{2cm}}{\pgfpoint{-2cm}{-2cm}}
+				\color{\fillColor}
+        \pgfusepath{draw, fill}
+        \pgfpathrectanglecorners{\pgfpoint{2cm}{2cm}}{\pgfpoint{-2cm}{-2cm}}
+				\color{\strokeColor}
+        \pgfusepath{draw}
+        \pgfsetlinewidth{0.9pt}
+
+				% Pins
+        \pgfpathmoveto{\pgfpoint{-1cm}{-2cm}}
+        \pgfpathlineto{\pgfpoint{-1cm}{-2.4cm}}
+        \pgfpathmoveto{\pgfpoint{0cm}{-2cm}}
+        \pgfpathlineto{\pgfpoint{0cm}{-2.4cm}}
+        \pgfpathmoveto{\pgfpoint{1cm}{-2cm}}
+        \pgfpathlineto{\pgfpoint{1cm}{-2.4cm}}
+        \pgfusepath{draw}
+
+        % HBridge Name
+        \pgftext[top,at={\pgfpoint{0cm}{1.9cm}}]{\normalsize Potentiometer}
+
+				% High Power Pin Names
+        \pgftext[bottom, at={\pgfpoint{-1cm}{-1.9cm}}]{\footnotesize 5V}
+        \pgftext[bottom, at={\pgfpoint{0cm}{-1.9cm}}]{\footnotesize Data}
+        \pgftext[bottom, at={\pgfpoint{1cm}{-1.9cm}}]{\footnotesize GND}
+		}
+}

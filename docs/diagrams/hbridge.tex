@@ -1,0 +1,99 @@
+\pgfkeys{/tikz/fillColor/.store in=\fillColor}
+\pgfkeys{/tikz/strokeColor/.store in=\strokeColor}
+
+\pgfdeclareshape{hbridge}{
+    \anchor{center}{\pgfpointorigin} % within the node, (0,0) is the center
+    \anchor{text} % this is used to center the text in the node
+    {\pgfpoint{-.5\wd\pgfnodeparttextbox}{-.5\ht\pgfnodeparttextbox}}
+
+		% Control Pins
+    \savedanchor\hbridgea{\pgfpoint{-2.4cm}{1.6cm}}
+    \anchor{VCC}{\hbridgea}
+    \savedanchor\hbridgeb{\pgfpoint{-2.4cm}{1.2cm}}
+    \anchor{GND}{\hbridgeb}
+    \savedanchor\hbridgec{\pgfpoint{-2.4cm}{0.4cm}}
+    \anchor{RIS}{\hbridgec}
+    \savedanchor\hbridged{\pgfpoint{-2.4cm}{0.0cm}}
+    \anchor{LIS}{\hbridged}
+    \savedanchor\hbridgee{\pgfpoint{-2.4cm}{-0.4cm}}
+    \anchor{REN}{\hbridgee}
+    \savedanchor\hbridgef{\pgfpoint{-2.4cm}{-0.8cm}}
+    \anchor{LEN}{\hbridgef}
+    \savedanchor\hbridgeg{\pgfpoint{-2.4cm}{-1.2cm}}
+    \anchor{RPWM}{\hbridgeg}
+    \savedanchor\hbridgeh{\pgfpoint{-2.4cm}{-1.6cm}}
+    \anchor{LPWM}{\hbridgeh}
+
+		% High Power Pins
+    \savedanchor\hbridgei{\pgfpoint{2.4cm}{-0.4cm}}
+    \anchor{B-}{\hbridgei}
+    \savedanchor\hbridgej{\pgfpoint{2.4cm}{-0.8cm}}
+    \anchor{B+}{\hbridgej}
+    \savedanchor\hbridgek{\pgfpoint{2.4cm}{-1.2cm}}
+    \anchor{M+}{\hbridgek}
+    \savedanchor\hbridgel{\pgfpoint{2.4cm}{-1.6cm}}
+    \anchor{M-}{\hbridgel}
+
+    \foregroundpath{ % Border and Pin Names are drawn here
+        \pgfsetlinewidth{0.5pt}
+        \pgfpathrectanglecorners{\pgfpoint{2cm}{2cm}}{\pgfpoint{-2cm}{-2cm}}
+				\color{\fillColor}
+        \pgfusepath{draw, fill}
+        \pgfpathrectanglecorners{\pgfpoint{2cm}{2cm}}{\pgfpoint{-2cm}{-2cm}}
+				\color{\strokeColor}
+        \pgfusepath{draw}
+        \pgfsetlinewidth{0.9pt}
+
+				% High Power Pins
+        \pgfpathmoveto{\pgfpoint{2cm}{-0.4cm}}
+        \pgfpathlineto{\pgfpoint{2.4cm}{-0.4cm}}
+        \pgfpathmoveto{\pgfpoint{2cm}{-0.8cm}}
+        \pgfpathlineto{\pgfpoint{2.4cm}{-0.8cm}}
+        \pgfpathmoveto{\pgfpoint{2cm}{-1.2cm}}
+        \pgfpathlineto{\pgfpoint{2.4cm}{-1.2cm}}
+        \pgfpathmoveto{\pgfpoint{2cm}{-1.6cm}}
+        \pgfpathlineto{\pgfpoint{2.4cm}{-1.6cm}}
+        \pgfusepath{draw}
+				
+				% Lower Power Pins
+        \pgfpathmoveto{\pgfpoint{-2cm}{1.6cm}}
+        \pgfpathlineto{\pgfpoint{-2.4cm}{1.6cm}}
+        \pgfpathmoveto{\pgfpoint{-2cm}{1.2cm}}
+        \pgfpathlineto{\pgfpoint{-2.4cm}{1.2cm}}
+
+				% Control Pins
+        \pgfpathmoveto{\pgfpoint{-2cm}{0.4cm}}
+        \pgfpathlineto{\pgfpoint{-2.4cm}{0.4cm}}
+        \pgfpathmoveto{\pgfpoint{-2cm}{0.0cm}}
+        \pgfpathlineto{\pgfpoint{-2.4cm}{0.0cm}}
+        \pgfpathmoveto{\pgfpoint{-2cm}{-0.4cm}}
+        \pgfpathlineto{\pgfpoint{-2.4cm}{-0.4cm}}
+        \pgfpathmoveto{\pgfpoint{-2cm}{-0.8cm}}
+        \pgfpathlineto{\pgfpoint{-2.4cm}{-0.8cm}}
+        \pgfpathmoveto{\pgfpoint{-2cm}{-1.2cm}}
+        \pgfpathlineto{\pgfpoint{-2.4cm}{-1.2cm}}
+        \pgfpathmoveto{\pgfpoint{-2cm}{-1.6cm}}
+        \pgfpathlineto{\pgfpoint{-2.4cm}{-1.6cm}}
+        \pgfusepath{draw}
+
+        % HBridge Name
+        \pgftext[top,at={\pgfpoint{0cm}{1.9cm}}]{\normalsize HBridge}
+        \pgftext[top,at={\pgfpoint{0cm}{1.5cm}}]{\normalsize BTS7960}
+
+				% High Power Pin Names
+        \pgftext[left, at={\pgfpoint{1.4cm}{-0.4cm}}]{\footnotesize B$-$}
+        \pgftext[left, at={\pgfpoint{1.4cm}{-0.8cm}}]{\footnotesize B+}
+        \pgftext[left, at={\pgfpoint{1.4cm}{-1.2cm}}]{\footnotesize M+}
+        \pgftext[left, at={\pgfpoint{1.4cm}{-1.6cm}}]{\footnotesize M$-$}
+
+				% Control Pin Names
+        \pgftext[left, at={\pgfpoint{-1.9cm}{1.6cm}}]{\footnotesize VCC}
+        \pgftext[left, at={\pgfpoint{-1.9cm}{1.2cm}}]{\footnotesize GND}
+        \pgftext[left, at={\pgfpoint{-1.9cm}{0.4cm}}]{\footnotesize R\_IS}
+        \pgftext[left, at={\pgfpoint{-1.9cm}{-0.0cm}}]{\footnotesize L\_IS}
+        \pgftext[left, at={\pgfpoint{-1.9cm}{-0.4cm}}]{\footnotesize R\_EN}
+        \pgftext[left, at={\pgfpoint{-1.9cm}{-0.8cm}}]{\footnotesize L\_EN}
+        \pgftext[left, at={\pgfpoint{-1.9cm}{-1.2cm}}]{\footnotesize RPWM}
+        \pgftext[left, at={\pgfpoint{-1.9cm}{-1.6cm}}]{\footnotesize LPWM}
+		}
+}
